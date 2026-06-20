@@ -7,6 +7,10 @@
 
 A comprehensive web application designed to help you improve your reading speed, pronunciation, and memory retention through interactive training tools. Built with vanilla JavaScript, no frameworks required!
 
+## 🌐 Live Demo
+
+**[Try Speed Reader Now!](https://speedreader2026.netlify.app/)**
+
 ## 🌟 Features
 
 ### 📖 Reading Trainer
