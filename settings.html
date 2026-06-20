@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Speed Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">Speed Reader</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="reading.html" class="nav-link">Reading Trainer</a></li>
+                <li><a href="tongue-twisters.html" class="nav-link">Tongue Twisters</a></li>
+                <li><a href="memory-test.html" class="nav-link">Memory Test</a></li>
+                <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+                <li><a href="settings.html" class="nav-link active">Settings</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+        <div class="container">
+            <h1 class="page-title">Settings</h1>
+            <p class="page-subtitle">Customize your reading experience</p>
+
+            <!-- Theme Settings -->
+            <div class="settings-group">
+                <div class="glass-card">
+                    <h2 class="settings-title">
+                        <span class="settings-icon">🎨</span>
+                        Theme Settings
+                    </h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Theme Mode</label>
+                            <p class="setting-description">Choose between light and dark mode</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="themeSelect" class="select-input">
+                                <option value="light">Light Mode</option>
+                                <option value="dark">Dark Mode</option>
+                                <option value="auto">Auto (System)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading Settings -->
+            <div class="settings-group">
+                <div class="glass-card">
+                    <h2 class="settings-title">
+                        <span class="settings-icon">📖</span>
+                        Reading Settings
+                    </h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Default Reading Speed</label>
+                            <p class="setting-description">Set your preferred reading speed (WPM)</p>
+                        </div>
+                        <div class="setting-control">
+                            <input 
+                                type="number" 
+                                id="defaultSpeedInput" 
+                                class="number-input" 
+                                min="50" 
+                                max="1000" 
+                                value="200"
+                            >
+                            <span class="input-suffix">WPM</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Default Font Size</label>
+                            <p class="setting-description">Set your preferred font size for reading</p>
+                        </div>
+                        <div class="setting-control">
+                            <input 
+                                type="number" 
+                                id="defaultFontSizeInput" 
+                                class="number-input" 
+                                min="16" 
+                                max="48" 
+                                value="24"
+                            >
+                            <span class="input-suffix">px</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Auto-Save Text</label>
+                            <p class="setting-description">Automatically save your text while typing</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="autoSaveToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Show Reading Statistics</label>
+                            <p class="setting-description">Display real-time statistics while reading</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="showStatsToggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tongue Twister Settings -->
+            <div class="settings-group">
+                <div class="glass-card">
+                    <h2 class="settings-title">
+                        <span class="settings-icon">🗣️</span>
+                        Tongue Twister Settings
+                    </h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Default Twister Speed</label>
+                            <p class="setting-description">Set your preferred tongue twister speed (WPM)</p>
+                        </div>
+                        <div class="setting-control">
+                            <input 
+                                type="number" 
+                                id="defaultTwisterSpeedInput" 
+                                class="number-input" 
+                                min="50" 
+                                max="500" 
+                                value="150"
+                            >
+                            <span class="input-suffix">WPM</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Auto-Repeat</label>
+                            <p class="setting-description">Automatically repeat tongue twisters</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="autoRepeatToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Management -->
+            <div class="settings-group">
+                <div class="glass-card">
+                    <h2 class="settings-title">
+                        <span class="settings-icon">💾</span>
+                        Data Management
+                    </h2>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Export Data</label>
+                            <p class="setting-description">Download all your data as a JSON file</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="btn btn-secondary" id="exportDataBtn">
+                                <span>📥</span> Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Import Data</label>
+                            <p class="setting-description">Import previously exported data</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="file" id="importFileInput" accept=".json" style="display: none;">
+                            <button class="btn btn-secondary" id="importDataBtn">
+                                <span>📤</span> Import
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Reset All Data</label>
+                            <p class="setting-description">Clear all saved data and reset to defaults</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="btn btn-danger" id="resetDataBtn">
+                                <span>⚠️</span> Reset All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Settings Button -->
+            <div class="settings-actions">
+                <button class="btn btn-primary btn-large" id="saveSettingsBtn">
+                    <span>💾</span> Save Settings
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 id="confirmTitle">Confirm Action</h2>
+                <button class="modal-close" id="closeConfirmModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelConfirmBtn">Cancel</button>
+                <button class="btn btn-danger" id="confirmActionBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

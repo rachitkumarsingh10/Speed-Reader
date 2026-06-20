@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Trainer - Speed Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">Speed Reader</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="reading.html" class="nav-link active">Reading Trainer</a></li>
+                <li><a href="tongue-twisters.html" class="nav-link">Tongue Twisters</a></li>
+                <li><a href="memory-test.html" class="nav-link">Memory Test</a></li>
+                <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Reading Trainer Section -->
+    <section class="reading-section">
+        <div class="container">
+            <!-- Text Input Area -->
+            <div class="input-section" id="inputSection">
+                <div class="glass-card">
+                    <h2>Paste Your Text</h2>
+                    <textarea 
+                        id="textInput" 
+                        class="text-input" 
+                        placeholder="Paste your text here...&#10;&#10;Tip: You can paste articles, books, or any text you want to practice reading. The text will be saved automatically."
+                    ></textarea>
+                    <div class="input-controls">
+                        <button class="btn btn-primary" id="startReadingBtn">
+                            <span>▶</span> Start Reading
+                        </button>
+                        <button class="btn btn-secondary" id="clearTextBtn">
+                            <span>🗑️</span> Clear Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading Display Area -->
+            <div class="reading-display" id="readingDisplay" style="display: none;">
+                <!-- Reading Controls -->
+                <div class="reading-controls-panel">
+                    <div class="glass-card controls-card">
+                        <div class="control-buttons">
+                            <button class="control-btn" id="playBtn" title="Play">
+                                <span>▶</span>
+                            </button>
+                            <button class="control-btn" id="pauseBtn" title="Pause" style="display: none;">
+                                <span>⏸</span>
+                            </button>
+                            <button class="control-btn" id="restartBtn" title="Restart">
+                                <span>⏮</span>
+                            </button>
+                            <button class="control-btn" id="stopBtn" title="Stop">
+                                <span>⏹</span>
+                            </button>
+                            <button class="control-btn" id="fullscreenBtn" title="Fullscreen">
+                                <span>⛶</span>
+                            </button>
+                        </div>
+
+                        <!-- Speed Control -->
+                        <div class="speed-control">
+                            <label>Speed: <span id="speedValue">200</span> WPM</label>
+                            <input 
+                                type="range" 
+                                id="speedSlider" 
+                                min="50" 
+                                max="1000" 
+                                value="200" 
+                                step="10"
+                                class="slider"
+                            >
+                            <div class="speed-labels">
+                                <span>Very Slow</span>
+                                <span>Slow</span>
+                                <span>Medium</span>
+                                <span>Fast</span>
+                                <span>Very Fast</span>
+                            </div>
+                        </div>
+
+                        <!-- Font Size Control -->
+                        <div class="font-control">
+                            <label>Font Size: <span id="fontSizeValue">24</span>px</label>
+                            <input 
+                                type="range" 
+                                id="fontSizeSlider" 
+                                min="16" 
+                                max="48" 
+                                value="24" 
+                                step="2"
+                                class="slider"
+                            >
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progressPercent">0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Reading Statistics -->
+                        <div class="reading-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Words:</span>
+                                <span class="stat-value" id="totalWords">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Current Speed:</span>
+                                <span class="stat-value" id="currentSpeed">0 WPM</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Elapsed Time:</span>
+                                <span class="stat-value" id="elapsedTime">00:00</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Remaining Time:</span>
+                                <span class="stat-value" id="remainingTime">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teleprompter Display -->
+                <div class="teleprompter-container" id="teleprompterContainer">
+                    <div class="teleprompter-content" id="teleprompterContent">
+                        <!-- Text will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Keyboard Shortcuts Info -->
+                <div class="shortcuts-info">
+                    <p><strong>Keyboard Shortcuts:</strong> Space = Pause/Resume | ↑ = Speed Up | ↓ = Slow Down | Esc = Exit Fullscreen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

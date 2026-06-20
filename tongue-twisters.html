@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tongue Twister Trainer - Speed Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">Speed Reader</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="reading.html" class="nav-link">Reading Trainer</a></li>
+                <li><a href="tongue-twisters.html" class="nav-link active">Tongue Twisters</a></li>
+                <li><a href="memory-test.html" class="nav-link">Memory Test</a></li>
+                <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Tongue Twister Section -->
+    <section class="tongue-twister-section">
+        <div class="container">
+            <h1 class="page-title">Tongue Twister Trainer</h1>
+            <p class="page-subtitle">Practice pronunciation and speaking clarity with challenging phrases</p>
+
+            <!-- Tongue Twister List -->
+            <div class="twister-layout">
+                <div class="twister-list-panel">
+                    <div class="glass-card">
+                        <div class="panel-header">
+                            <h2>Tongue Twisters</h2>
+                            <button class="btn btn-primary btn-small" id="addTwisterBtn">
+                                <span>➕</span> Add New
+                            </button>
+                        </div>
+
+                        <!-- Practice Controls -->
+                        <div class="practice-controls">
+                            <button class="control-btn" id="shuffleBtn" title="Shuffle">
+                                <span>🔀</span>
+                            </button>
+                            <button class="control-btn" id="prevTwisterBtn" title="Previous">
+                                <span>⏮</span>
+                            </button>
+                            <button class="control-btn" id="nextTwisterBtn" title="Next">
+                                <span>⏭</span>
+                            </button>
+                        </div>
+
+                        <!-- Tongue Twister Items -->
+                        <div class="twister-list" id="twisterList">
+                            <!-- Tongue twisters will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Panel -->
+                <div class="twister-reading-panel">
+                    <div class="glass-card">
+                        <div id="noTwisterSelected" class="no-selection">
+                            <div class="no-selection-icon">🗣️</div>
+                            <h3>Select a Tongue Twister</h3>
+                            <p>Choose a tongue twister from the list to start practicing</p>
+                        </div>
+
+                        <div id="twisterReadingArea" style="display: none;">
+                            <!-- Reading Controls -->
+                            <div class="reading-controls-compact">
+                                <button class="control-btn" id="twisterPlayBtn" title="Play">
+                                    <span>▶</span>
+                                </button>
+                                <button class="control-btn" id="twisterPauseBtn" title="Pause" style="display: none;">
+                                    <span>⏸</span>
+                                </button>
+                                <button class="control-btn" id="twisterRestartBtn" title="Restart">
+                                    <span>⏮</span>
+                                </button>
+                                <button class="control-btn" id="twisterStopBtn" title="Stop">
+                                    <span>⏹</span>
+                                </button>
+                                <button class="control-btn" id="twisterLoopBtn" title="Toggle Auto-Loop (plays continuously)">
+                                    <span>🔂</span>
+                                </button>
+                                <button class="control-btn" id="twisterFullscreenBtn" title="Fullscreen">
+                                    <span>⛶</span>
+                                </button>
+                            </div>
+
+                            <!-- Speed Control -->
+                            <div class="speed-control-compact">
+                                <label>Speed: <span id="twisterSpeedValue">150</span> WPM</label>
+                                <input 
+                                    type="range" 
+                                    id="twisterSpeedSlider" 
+                                    min="50" 
+                                    max="500" 
+                                    value="150" 
+                                    step="10"
+                                    class="slider"
+                                >
+                            </div>
+
+                            <!-- Font Size Control -->
+                            <div class="font-control-compact">
+                                <label>Font Size: <span id="twisterFontSizeValue">28</span>px</label>
+                                <input 
+                                    type="range" 
+                                    id="twisterFontSizeSlider" 
+                                    min="20" 
+                                    max="56" 
+                                    value="28" 
+                                    step="2"
+                                    class="slider"
+                                >
+                            </div>
+
+                            <!-- Teleprompter Display -->
+                            <div class="twister-teleprompter" id="twisterTeleprompter">
+                                <div class="twister-content" id="twisterContent">
+                                    <!-- Tongue twister text will be displayed here -->
+                                </div>
+                            </div>
+
+                            <!-- Practice Stats -->
+                            <div class="practice-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Repetitions:</span>
+                                    <span class="stat-value" id="repetitionCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Practice Time:</span>
+                                    <span class="stat-value" id="practiceTime">00:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Twister Modal -->
+    <div class="modal" id="twisterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Tongue Twister</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea 
+                    id="twisterTextInput" 
+                    class="modal-textarea" 
+                    placeholder="Enter tongue twister text..."
+                ></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveTwisterBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Test - Speed Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">Speed Reader</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="reading.html" class="nav-link">Reading Trainer</a></li>
+                <li><a href="tongue-twisters.html" class="nav-link">Tongue Twisters</a></li>
+                <li><a href="memory-test.html" class="nav-link active">Memory Test</a></li>
+                <li><a href="statistics.html" class="nav-link">Statistics</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Memory Test Section -->
+    <section class="memory-test-section">
+        <div class="container">
+            <h1 class="page-title">Memory Test</h1>
+            <p class="page-subtitle">Test your memory by reading text and then writing what you remember</p>
+
+            <div class="memory-test-layout">
+                <!-- Setup Phase -->
+                <div class="glass-card" id="setupPhase">
+                    <h2>Setup Your Test</h2>
+                    
+                    <div class="form-group">
+                        <label for="memoryTextInput">Enter or paste text to memorize:</label>
+                        <textarea 
+                            id="memoryTextInput" 
+                            class="modal-textarea" 
+                            placeholder="Enter the text you want to memorize..."
+                            rows="8"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="readingTimeInput">Reading time (seconds): <span id="readingTimeValue">30</span></label>
+                        <input 
+                            type="range" 
+                            id="readingTimeInput" 
+                            min="10" 
+                            max="120" 
+                            value="30" 
+                            step="5"
+                            class="slider"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memoryFontSizeInput">Font size: <span id="memoryFontSizeValue">24</span>px</label>
+                        <input 
+                            type="range" 
+                            id="memoryFontSizeInput" 
+                            min="16" 
+                            max="48" 
+                            value="24" 
+                            step="2"
+                            class="slider"
+                        >
+                    </div>
+
+                    <button class="btn btn-primary btn-large" id="startMemoryTestBtn">Start Memory Test</button>
+                </div>
+
+                <!-- Reading Phase -->
+                <div class="glass-card" id="readingPhase" style="display: none;">
+                    <div class="memory-timer">
+                        <h2>Read and Memorize</h2>
+                        <div class="timer-display" id="timerDisplay">00:30</div>
+                    </div>
+
+                    <div class="memory-text-display" id="memoryTextDisplay">
+                        <!-- Text to memorize will be displayed here -->
+                    </div>
+
+                    <div class="memory-controls">
+                        <button class="btn btn-secondary" id="cancelReadingBtn">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Writing Phase -->
+                <div class="glass-card" id="writingPhase" style="display: none;">
+                    <h2>Write What You Remember</h2>
+                    <p class="instruction-text">Type as much as you can remember from the text you just read:</p>
+
+                    <textarea 
+                        id="memoryRecallInput" 
+                        class="modal-textarea" 
+                        placeholder="Start typing what you remember..."
+                        rows="10"
+                    ></textarea>
+
+                    <div class="memory-controls">
+                        <button class="btn btn-secondary" id="cancelWritingBtn">Cancel</button>
+                        <button class="btn btn-primary" id="submitRecallBtn">Submit & See Results</button>
+                    </div>
+                </div>
+
+                <!-- Results Phase -->
+                <div class="glass-card" id="resultsPhase" style="display: none;">
+                    <h2>Test Results</h2>
+
+                    <div class="results-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="accuracyScore">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="wordsRemembered">0/0</div>
+                            <div class="stat-label">Words Remembered</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="readingTimeUsed">0s</div>
+                            <div class="stat-label">Reading Time</div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <div class="comparison-panel">
+                            <h3>Original Text</h3>
+                            <div class="comparison-text" id="originalText"></div>
+                        </div>
+                        <div class="comparison-panel">
+                            <h3>Your Recall</h3>
+                            <div class="comparison-text" id="recalledText"></div>
+                        </div>
+                    </div>
+
+                    <div class="results-details">
+                        <h3>Detailed Analysis</h3>
+                        <div id="detailedAnalysis"></div>
+                    </div>
+
+                    <div class="memory-controls">
+                        <button class="btn btn-secondary" id="newTestBtn">New Test</button>
+                        <button class="btn btn-primary" id="retryTestBtn">Retry Same Text</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
